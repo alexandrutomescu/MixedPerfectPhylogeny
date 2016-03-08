@@ -68,7 +68,7 @@ If your input matrix does not belong to the polynomially-solvable case, then the
 
 	./mixedphylogeny -i example/matrix_alg2.csv -o example/matrix_alg2.out.csv --heuristic
 
-# 4. Experimental results
+# 5. Experimental results
 
 We tested the heuristic algorithms on the ten binary matrices from
 
