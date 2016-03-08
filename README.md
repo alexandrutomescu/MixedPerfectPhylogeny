@@ -44,4 +44,4 @@ The output matrix has the same format. If a row labeled **r** is split into *k* 
 
 The program also outputs the perfect phylogeny tree of this output matrix, in dot format. This can be visualized by e.g., [Graphviz](http://www.graphviz.org). For example, the tree of this output matrix is
 
-![Output tree](https://github.com/alexandrutomescu/MixedPhylogeny/master/example/matrix_alg1.out.csv.png)
+![Output tree](https://github.com/alexandrutomescu/MixedPhylogeny/blob/master/example/matrix_alg1.out.csv.png)
