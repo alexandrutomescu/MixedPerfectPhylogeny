@@ -47,9 +47,19 @@ The program also outputs the perfect phylogeny tree of this output matrix, in do
 ![Output tree](https://github.com/alexandrutomescu/MixedPhylogeny/blob/master/example/matrix_alg1.out.csv.png)
 
 # 3. Installation
+
 If you use Linux, just type:
 
 	make
 
 Our implementation needs the free (Lemon library)[http://lemon.cs.elte.hu/trac/lemon]. We provide a pre-compiled version for Linux in the directory **lemon_binaries_linux**. If you use a different system, or this doesn't work for you, install Lemon as described in its manual, and modify our **makefile** to point to your installation of Lemon.
 	
+# 4. Running
+
+If you want to run the first algorithm (the exact one for the polynomially solvable instances), run e.g.:
+
+	./mixedphylogeny -i example/matrix_alg1.csv -o example/matrix_alg1.out.csv
+	
+If your input matrix does not belong to the polynomially-solvable case, then the implementation will tell you so. In that case, you can run our second, heuristic, algorithm, by adding the parameter **--heuristic**, e.g.:
+
+	./mixedphylogeny -i example/matrix_alg2.csv -o example/matrix_alg2.out.csv --heuristic
