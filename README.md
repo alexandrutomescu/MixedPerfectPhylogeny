@@ -5,7 +5,7 @@ This repository contains implementations of the two algorithms from:
 
 A shorter version of this paper appeared in the proceedings of WABI 2015:
 
-*Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Finding a Perfect Phylogeny from Mixed Tumor Samples. WABI 2015, LNCS 9289, pp. 80-92, extended version is available at [http://arxiv.org/abs/1506.07675](http://arxiv.org/abs/1506.07675).*
+*Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Finding a Perfect Phylogeny from Mixed Tumor Samples. WABI 2015, LNCS 9289, pp. 80-92, extended version available at [http://arxiv.org/abs/1506.07675](http://arxiv.org/abs/1506.07675).*
 
 Both algorithms are given a binary matrix, and output a minimum conflict-free row-split of it. Some slides about this problem are available [**here**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf).
 
