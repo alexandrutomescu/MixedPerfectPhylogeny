@@ -13,13 +13,13 @@ Both algorithms are given a binary matrix, and output a minimum conflict-free ro
 
 The input matrix must be in .csv format, with ';' as value separator. Such files can be edited with e.g. Excel. The first column must contain the row (i.e., sample) names, and the first row must contain the column (i.e., mutation location) names. For example, the following table 
 
-|  |c1|c2|c3|c4|c5|c3'|
-|--|--|--|--|--|--|---|
-|r1| 1| 0| 0| 0| 0|  0|
-|r2| 1| 1| 1| 1| 0|  1|
-|r3| 0| 1| 0| 1| 0|  0|
-|r4| 0| 1| 1| 0| 1|  1|
-|r5| 0| 1| 0| 0| 0|  0|
+|   | c1| c2| c3| c4| c5| c3'|
+|---|---|---|---|---|---|----|
+| r1|  1|  0|  0|  0|  0|   0|
+| r2|  1|  1|  1|  1|  0|   1|
+| r3|  0|  1|  0|  1|  0|   0|
+| r4|  0|  1|  1|  0|  1|   1|
+| r5|  0|  1|  0|  0|  0|   0|
 
 is encoded as:
 
@@ -42,6 +42,6 @@ The output matrix has the same format. If a row labeled **r** is split into *k* 
 	r4;0;1;1;1;0;1
 	r5;0;1;0;0;0;0
 
-The program also outputs the perfect phylogeny tree of this output matrix, is dot format. This can be visualized by e.g., [Graphviz](http://www.graphviz.org). For example, the tree for this output matrix is
+The program also outputs the perfect phylogeny tree of this output matrix, in dot format. This can be visualized by e.g., [Graphviz](http://www.graphviz.org). For example, the tree of this output matrix is
 
 matrix_alg1.out.csv.png
