@@ -3,15 +3,15 @@ This repository contains implementations of the two algorithms from:
 
 *Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Complexity and algorithms for finding a perfect phylogeny from mixed tumor samples, 2016, submitted.*
 
-A shorter version of this paper appeared in the proceedings of WABI 2015:
+A shorter version of this paper appeared in the Proceedings of WABI 2015:
 
 *Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Finding a Perfect Phylogeny from Mixed Tumor Samples. WABI 2015, LNCS 9289, pp. 80-92, extended version available at [http://arxiv.org/abs/1506.07675](http://arxiv.org/abs/1506.07675).*
 
-Both algorithms are given a binary matrix, and output a minimum conflict-free row-split of it. Some slides about this problem are available [**here**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf).
+Both algorithms are given a binary matrix, and output a minimum conflict-free row-split of it. A shorter description of the problem is available in these [**slides**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf).
 
 ## 1. Input format
 
-The input matrix must be in .csv format, with ';' as value separator. Such files can be edited with e.g. Excel. The first column must contain the row (i.e., sample) names, and the first row must contain the column (i.e., mutation location) names. For example, the following table 
+The input matrix must be in .csv format, with ';' as value separator. Such files can be written/edited with e.g. Excel. The first column must contain the row (i.e., sample) names, and the first row must contain the column (i.e., mutation location) names. For example, the following table 
 
 |   | c1| c2| c3| c4| c5| c3'|
 |---|---|---|---|---|---|----|
@@ -52,11 +52,11 @@ If you use Linux, just type:
 
 	make
 
-This creates the executable
+This creates the executable:
 
 	mixedphylogeny
 	
-Our implementation needs the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). We provide a pre-compiled version for Linux in the directory **lemon_binaries_linux**. If you use a different system, or this doesn't work for you, install Lemon as described in its manual, and modify our **makefile** to point to your installation of Lemon.
+Our implementation requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). We provide a pre-compiled version for Linux in the directory **lemon_binaries_linux**. If you use a different system or if this doesn't work for you, install Lemon as described in its manual and modify our **makefile** to point to your installation of Lemon.
 	
 # 4. Running
 
@@ -70,6 +70,6 @@ If your input matrix does not belong to the polynomially-solvable case, then the
 
 # 5. Experimental results
 
-We tested the heuristic algorithms on the ten binary matrices from
+We tested the heuristic algorithms on the ten binary matrices from:
 
 *M. Gerlinger et al., Genomic architecture and evolution of clear cell renal cell carcinomas defined by multiregion sequencing, Nature Genetics, 46(3), 2014, 225-232, doi:[10.1038/ng.2891](http://dx.doi.org/10.1038/ng.2891)*. Our conflict-free row-split matrices and the corresponding phylogenetic trees are available [**here**](http://cs.helsinki.fi/u/tomescu/MixedPhylogeny/results-Gerlinger-et-al-2014.zip).
