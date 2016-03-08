@@ -33,7 +33,7 @@ is encoded as:
 ## 2. Output format	
 The output matrix has the same format. If a row labeled **r** is split into *k* rows in the output matrix, the labels of the resulting rows will be **r_1, r_2, ..., r_k**. For example:
 
-	;c1;c2; c3;c3';c4;c5
+	;c1;c2;c3;c3';c4;c5
 	r1;1;0;0;0;0;0
 	r2_1;1;0;0;0;0;0
 	r2_2;0;1;1;1;0;0
@@ -44,4 +44,4 @@ The output matrix has the same format. If a row labeled **r** is split into *k* 
 
 The program also outputs the perfect phylogeny tree of this output matrix, in dot format. This can be visualized by e.g., [Graphviz](http://www.graphviz.org). For example, the tree of this output matrix is
 
-matrix_alg1.out.csv.png
+![Output tree](https://github.com/alexandrutomescu/MixedPhylogeny/master/example/matrix_alg1.out.csv.png)
