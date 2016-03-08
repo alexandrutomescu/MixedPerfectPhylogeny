@@ -1,4 +1,4 @@
-# MixedPhylogeny
+# MixedPhylogeny v0.1
 This repository contains implementations of the two algorithms from: 
 
 *Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Complexity and algorithms for finding a perfect phylogeny from mixed tumor samples, 2016, submitted.*
