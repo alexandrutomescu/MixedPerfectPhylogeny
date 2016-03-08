@@ -52,6 +52,10 @@ If you use Linux, just type:
 
 	make
 
+This creates the executable
+
+	mixedphylogeny
+	
 Our implementation needs the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). We provide a pre-compiled version for Linux in the directory **lemon_binaries_linux**. If you use a different system, or this doesn't work for you, install Lemon as described in its manual, and modify our **makefile** to point to your installation of Lemon.
 	
 # 4. Running
