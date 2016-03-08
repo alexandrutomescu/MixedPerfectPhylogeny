@@ -9,4 +9,4 @@ all:
 	cd src; $(CC) $(FILES) $(CPPFLAGS) -o $(OUT_EXE) 
 
 clean:
-	cd src; rm -rf $(OUT_EXE)
+	rm -rf $(OUT_EXE)

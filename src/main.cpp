@@ -101,23 +101,33 @@ int main(int argc, char **argv)
 	// hiding duplicate columns
 	inputMatrix.hide_duplicate_columns();
 
-	if (should_run_heuristic_algorithm)
+	if (not inputMatrix.is_conflict_free())
 	{
-		heuristic_algorithm(inputMatrix, outputMatrix);
-	}
-	else
-	{
-		if (check_special_case(inputMatrix))
+		if (should_run_heuristic_algorithm)
 		{
-			polynomial_algorithm(inputMatrix, outputMatrix);
+			heuristic_algorithm(inputMatrix, outputMatrix);
 		}
 		else
 		{
-			cout << "ERROR: The input matrix does not belong to the special class of polynomial solvable matrices described in the paper." << endl;
-			cout << "ERROR: Try running the heuristic algorithm instead. Add parameter --heuristic when running the tool" << endl;
-			return EXIT_FAILURE;
+			if (check_special_case(inputMatrix))
+			{
+				polynomial_algorithm(inputMatrix, outputMatrix);
+			}
+			else
+			{
+				cout << "ERROR: The input matrix does not belong to the special class of polynomial solvable matrices described in the paper." << endl;
+				cout << "ERROR: Try running the heuristic algorithm instead. Add parameter --heuristic when running the tool" << endl;
+				return EXIT_FAILURE;
+			}
 		}
 	}
+	else
+	{
+		cout << "INFO: Input matrix " << inputFileName << " is already conflict-free. Writing it in output" << endl;
+		outputMatrix = inputMatrix;
+	}
+
+
 	draw_tree_in_dot_file(outputMatrix, outputFileName + ".dot");
 
 	// showing duplicate columns
