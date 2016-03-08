@@ -45,3 +45,11 @@ The output matrix has the same format. If a row labeled **r** is split into *k* 
 The program also outputs the perfect phylogeny tree of this output matrix, in dot format. This can be visualized by e.g., [Graphviz](http://www.graphviz.org). For example, the tree of this output matrix is
 
 ![Output tree](https://github.com/alexandrutomescu/MixedPhylogeny/blob/master/example/matrix_alg1.out.csv.png)
+
+# 3. Installation
+If you use Linux, just type:
+
+	make
+
+Our implementation needs the free (Lemon library)[http://lemon.cs.elte.hu/trac/lemon]. We provide a pre-compiled version for Linux in the directory **lemon_binaries_linux**. If you use a different system, or this doesn't work for you, install Lemon as described in its manual, and modify our **makefile** to point to your installation of Lemon.
+	
