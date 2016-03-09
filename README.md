@@ -1,5 +1,5 @@
 # MixedPhylogeny v0.1
-**For questions or issue about this code, contact [tomescu@cs.helsinki.fi](mailto:tomescu@cs.helsinki.fi), or open an issue on github.**
+**For questions or problems with this code, contact [tomescu@cs.helsinki.fi](mailto:tomescu@cs.helsinki.fi), or open an issue on github.**
 
 This repository contains implementations of the two algorithms from: 
 
