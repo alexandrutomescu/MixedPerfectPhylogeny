@@ -7,7 +7,7 @@ A shorter version of this paper appeared in the Proceedings of WABI 2015:
 
 *Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Finding a Perfect Phylogeny from Mixed Tumor Samples. WABI 2015, LNCS 9289, pp. 80-92, extended version available at [http://arxiv.org/abs/1506.07675](http://arxiv.org/abs/1506.07675).*
 
-Both algorithms address the MINIMUM CONFLICT-FREE ROW SPLIT problem, originally proposed by *I. Hajirasouliha, B. Raphael, Reconstructing Mutational History in Multiply Sampled Tumors Using Perfect Phylogeny Mixtures. WABI 2014: 354-367 doi:[10.1007/978-3-662-44753-6_27](http://dx.doi.org/10.1007/978-3-662-44753-6_27)*.  A visual description of this problem is available in these [**slides**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf). Our first algorithm is exact, runs in polynomial time, but only solves a particular class of inputs. The second algorithm is heuristic, i.e. runs on all inputs in polynomial time, but may not produce an optimal solution. 
+Both algorithms address the **MINIMUM CONFLICT-FREE ROW SPLIT problem**, originally proposed by *I. Hajirasouliha, B. Raphael, Reconstructing Mutational History in Multiply Sampled Tumors Using Perfect Phylogeny Mixtures. WABI 2014: 354-367 doi:[10.1007/978-3-662-44753-6_27](http://dx.doi.org/10.1007/978-3-662-44753-6_27)*.  A visual description of this problem is available in these [**slides**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf). Our first algorithm is exact, runs in polynomial time, but only solves a particular class of inputs. The second algorithm is heuristic, i.e. runs on all inputs in polynomial time, but may not produce an optimal solution. 
 
 ## 1. Input format
 
