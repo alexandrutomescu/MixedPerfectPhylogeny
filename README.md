@@ -58,7 +58,7 @@ This creates the executable:
 
 	mixedphylogeny
 	
-Our code requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). (We provided a pre-compiled version for Linux/Mac OS in the directory **lemon_binaries_linux**.) If you use a different operating system or if this doesn't work for you, install Lemon as described in its manual and modify our **makefile** to point to your installation of Lemon.
+Our code requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). (We provided a pre-compiled version for Linux/Mac OS in the directory **lemon_binaries_linux**.) If you use a different operating system, install Lemon as described in its manual, modify our **makefile** to point to your installation of Lemon, and run **make** again.
 	
 # 4. Running
 
