@@ -1,4 +1,4 @@
-# MixedPerfectPhylogeny v0.1
+# Mixed Perfect Phylogeny v0.1
 **For questions or problems with this code, contact [tomescu@cs.helsinki.fi](mailto:tomescu@cs.helsinki.fi), or open an [issue](https://github.com/alexandrutomescu/MixedPhylogeny/issues) on github.**
 
 This repository contains implementations of the two algorithms from: 
