@@ -66,7 +66,7 @@ If you want to run the first algorithm (the exact one for the polynomially solva
 
 	./mixedphylogeny -i example/matrix_alg1.csv -o example/matrix_alg1.out.csv
 	
-If your input matrix does not belong to the polynomially-solvable case, then the implementation will tell you so. In that case, you can run our second, heuristic, algorithm, by adding the parameter **--heuristic**, e.g.:
+If your input matrix does not belong to the polynomially-solvable case, then the program will tell you so. In that case, you can run our second, heuristic, algorithm, by adding the parameter **--heuristic**, e.g.:
 
 	./mixedphylogeny -i example/matrix_alg2.csv -o example/matrix_alg2.out.csv --heuristic
 
