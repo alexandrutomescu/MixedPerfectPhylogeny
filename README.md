@@ -72,4 +72,4 @@ If your input matrix does not belong to the polynomially-solvable case, then the
 
 We tested the heuristic algorithm on the ten binary matrices from:
 
-*M. Gerlinger et al., Genomic architecture and evolution of clear cell renal cell carcinomas defined by multiregion sequencing, Nature Genetics, 46(3), 2014, 225-232, doi:[10.1038/ng.2891](http://dx.doi.org/10.1038/ng.2891)*. Our conflict-free row-split matrices and the corresponding phylogenetic trees are available [**here**](http://cs.helsinki.fi/u/tomescu/MixedPhylogeny/results-Gerlinger-et-al-2014.zip).
+*M. Gerlinger et al., Genomic architecture and evolution of clear cell renal cell carcinomas defined by multiregion sequencing, Nature Genetics, 46(3), 2014, 225-232, doi:[10.1038/ng.2891](http://dx.doi.org/10.1038/ng.2891)*. Our conflict-free row split matrices and the corresponding phylogenetic trees are available [**here**](http://cs.helsinki.fi/u/tomescu/MixedPhylogeny/results-Gerlinger-et-al-2014.zip).
