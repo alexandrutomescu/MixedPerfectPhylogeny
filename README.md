@@ -48,7 +48,7 @@ The program also outputs the perfect phylogeny tree of this output matrix, in .d
 
 # 3. Installation
 
-If you use Linux, just type:
+If you use Linux or Mac OS, just type in the directory **MixedPhylogeny**:
 
 	make
 
@@ -56,7 +56,7 @@ This creates the executable:
 
 	mixedphylogeny
 	
-Our implementation requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). We provide a pre-compiled version for Linux in the directory **lemon_binaries_linux**. If you use a different system or if this doesn't work for you, install Lemon as described in its manual and modify our **makefile** to point to your installation of Lemon.
+Our code requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). (We provided a pre-compiled version for Linux/Mac OS in the directory **lemon_binaries_linux**.) If you use a different system or if this doesn't work for you, install Lemon as described in its manual and modify our **makefile** to point to your installation of Lemon.
 	
 # 4. Running
 
