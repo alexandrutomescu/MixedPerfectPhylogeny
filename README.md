@@ -1,4 +1,6 @@
 # MixedPhylogeny v0.1
+**Contact: tomescu@cs.helsinki.fi**
+
 This repository contains implementations of the two algorithms from: 
 
 *Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Complexity and algorithms for finding a perfect phylogeny from mixed tumor samples, 2016, submitted.*
@@ -31,7 +33,7 @@ is encoded as:
 	r5;0;1;0;0;0;0
 	
 ## 2. Output format	
-The output matrix has the same format. If a row labeled **r** is split into *k* rows in the output matrix, the labels of the resulting rows will be **r_1, r_2, ..., r_k**. For example:
+The output matrix has the same .csv format. If a row labeled **r** is split into *k* rows in the output matrix, the labels of the resulting rows will be **r_1, r_2, ..., r_k**. For example:
 
 	;c1;c2;c3;c3';c4;c5
 	r1;1;0;0;0;0;0
@@ -56,7 +58,7 @@ This creates the executable:
 
 	mixedphylogeny
 	
-Our code requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). (We provided a pre-compiled version for Linux/Mac OS in the directory **lemon_binaries_linux**.) If you use a different system or if this doesn't work for you, install Lemon as described in its manual and modify our **makefile** to point to your installation of Lemon.
+Our code requires the free [Lemon library](http://lemon.cs.elte.hu/trac/lemon). (We provided a pre-compiled version for Linux/Mac OS in the directory **lemon_binaries_linux**.) If you use a different operating system or if this doesn't work for you, install Lemon as described in its manual and modify our **makefile** to point to your installation of Lemon.
 	
 # 4. Running
 
