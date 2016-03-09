@@ -50,7 +50,7 @@ The program also outputs the perfect phylogeny tree of this output matrix, in .d
 
 # 3. Installation
 
-If you use Linux or Mac OS, just type in the directory **MixedPhylogeny**:
+If you use Linux or Mac OS, type in the root directory:
 
 	make
 
