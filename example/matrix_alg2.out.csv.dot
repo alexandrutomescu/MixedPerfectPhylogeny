@@ -1,47 +1,33 @@
 digraph {
-r1_1[shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
-r1_2[shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
-r1_3[shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
-r2_1[shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
-r2_2[shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
-r2_3[shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
-r3[shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
-r4_1[shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
-r4_2[shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
-r4_3[shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
-r5_1[shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
-r5_2[shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+r1_1[label="r1_1",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+r1_2[label="r1_2",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+r1_3[label="r1_3",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+r2_1[label="r2_1",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+r2_2[label="r2_2",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+r3[label="r3",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+r5_1[label="r5_1",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+legend[label="Equalities among split rows:
+r1_1 = r4_2
+r1_3 = r2_3 = r4_3
+r2_1 = r4_1
+r2_2 = r5_2
+",shape=box,fontsize=18];
 Int0[shape=point,style=filled,fillcolor=black,label=""];
 Int0 -> r1_2[arrowhead=none];
 Int0 -> r3[arrowhead=none];
 Int1[shape=point,style=filled,fillcolor=black,label=""];
-Int1 -> r4_1[arrowhead=none];
+Int1 -> r2_1[arrowhead=none];
 Int1 -> Int0[arrowhead=none];
 Int2[shape=point,style=filled,fillcolor=black,label=""];
-Int2 -> r2_2[arrowhead=none];
-Int2 -> r5_2[arrowhead=none];
+Int2 -> r5_1[arrowhead=none];
+Int2 -> Int1[arrowhead=none];
 Int3[shape=point,style=filled,fillcolor=black,label=""];
-Int3 -> r2_1[arrowhead=none];
-Int3 -> Int1[arrowhead=none];
+Int3 -> r1_1[arrowhead=none];
+Int3 -> r2_2[arrowhead=none];
 Int4[shape=point,style=filled,fillcolor=black,label=""];
-Int4 -> r5_1[arrowhead=none];
+Int4 -> Int2[arrowhead=none];
 Int4 -> Int3[arrowhead=none];
 Int5[shape=point,style=filled,fillcolor=black,label=""];
-Int5 -> r4_2[arrowhead=none];
-Int5 -> Int2[arrowhead=none];
-Int6[shape=point,style=filled,fillcolor=black,label=""];
-Int6 -> r2_3[arrowhead=none];
-Int6 -> r4_3[arrowhead=none];
-Int7[shape=point,style=filled,fillcolor=black,label=""];
-Int7 -> r1_3[arrowhead=none];
-Int7 -> Int6[arrowhead=none];
-Int8[shape=point,style=filled,fillcolor=black,label=""];
-Int8 -> r1_1[arrowhead=none];
-Int8 -> Int5[arrowhead=none];
-Int9[shape=point,style=filled,fillcolor=black,label=""];
-Int9 -> Int7[arrowhead=none];
-Int9 -> Int8[arrowhead=none];
-Int10[shape=point,style=filled,fillcolor=black,label=""];
-Int10 -> Int4[arrowhead=none];
-Int10 -> Int9[arrowhead=none];
+Int5 -> r1_3[arrowhead=none];
+Int5 -> Int4[arrowhead=none];
 }
