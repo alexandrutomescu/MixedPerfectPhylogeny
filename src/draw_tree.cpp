@@ -3,6 +3,7 @@
 struct tree_leaf 
 {
 	string id;
+	string label;
 	unordered_set<int> elements;
 };
 
@@ -30,6 +31,7 @@ void draw_tree_in_dot_file(const binary_matrix& m, string outputFileName)
 
 	binary_matrix a = m;
 	// a.hide_duplicate_columns();
+	string legend = "";
 
 	ofstream outputFile;
 	outputFile.open(outputFileName);
@@ -43,6 +45,7 @@ void draw_tree_in_dot_file(const binary_matrix& m, string outputFileName)
 	{
 		tree_leaf new_leaf;
 		new_leaf.id = a.row_names[i];
+		new_leaf.label = "";
 
 		for (int j = 0; j < a.n_columns; j++)
 		{
@@ -52,17 +55,40 @@ void draw_tree_in_dot_file(const binary_matrix& m, string outputFileName)
 			}
 		}
 
-		leaves.push_back(new_leaf);
+		bool new_leaf_is_new = true;
+		// check first if we have another leaf identical to this one
+		for (int j = 0; j < leaves.size(); j++)
+		{
+			// checking if leaf i is identical to new_leaf
+			if (new_leaf.elements == leaves[j].elements)
+			{
+				new_leaf_is_new = false;
+				if (leaves[j].label == "")
+				{
+					leaves[j].label = leaves[j].id;
+				}
+				leaves[j].label += (" = " + new_leaf.id);
+				break;
+			}
+			
+		}
+		if (new_leaf_is_new)
+		{
+			leaves.push_back(new_leaf);	
+		}
+	}
 
-		size_t pos = new_leaf.id.find("_", 0); //store the position of the delimiter
+	for (int i = 0; i < leaves.size(); i++)
+	{
+		size_t pos = leaves[i].id.find("_", 0); //store the position of the delimiter
 		string type;
 		if (pos != string::npos)
 		{
-			type = new_leaf.id.substr(0, pos);
+			type = leaves[i].id.substr(0, pos);
 		}
 		else
 		{
-			type = new_leaf.id;
+			type = leaves[i].id;
 		}
 		if (color.count(type) == 0)
 		{
@@ -73,10 +99,29 @@ void draw_tree_in_dot_file(const binary_matrix& m, string outputFileName)
 				next_available_color = 0;
 			}
 		}
-		outputFile << new_leaf.id << "[shape=box,style=filled,fontsize=28,fillcolor=\"" << color[type] << "\"];" << endl;
+		outputFile << leaves[i].id << "[label=\"" << leaves[i].id << "\",shape=box,style=filled,fontsize=28,fillcolor=\"" << color[type] << "\"];" << endl;	
 	}
 
+	// getting legend label
+	string legend_label = "";
+	for (int i = 0; i < leaves.size(); i++)
+	{
+		if (leaves[i].label != "")
+		{
+			legend_label += (leaves[i].label + "\n");
+		}
+	}
+
+	if (legend_label != "")
+	{
+		legend_label = "Equalities among split rows:\n" + legend_label;
+		outputFile << "legend[label=\"" << legend_label << "\",shape=box,fontsize=18];" << endl;
+	}
+	
+
 	int new_node_counter = 0;
+
+	cout << "INFO: Resulting phylogeny has " << leaves.size() << " leaves" << endl;
 
 	while (leaves.size() > 1)
 	{
