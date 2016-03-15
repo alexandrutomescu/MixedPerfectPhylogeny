@@ -2,7 +2,7 @@
 
 #include "flow.h"
 
-int64_t createFlowNetwork(ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, ListDigraph::NodeMap<string>& nodeLabel, 
+int64_t createFlowNetwork(const ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, ListDigraph::NodeMap<string>& nodeLabel, 
 							ListDigraph& flowNetwork, ListDigraph::ArcMap<int64_t>& lowerMap, ListDigraph::ArcMap<int64_t>& upperMap, 
 							ListDigraph::ArcMap<int64_t>& costMap, ListDigraph::NodeMap<int64_t>& supplyMap, ListDigraph::NodeMap<string>& labelMap,
 							ListDigraph::NodeMap<ListDigraph::Node>& flowNodetoGraphNode)
@@ -96,7 +96,7 @@ int64_t createFlowNetwork(ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeigh
 	return 0;
 }
 
-vector<vector<string>* > solveMPCFlow(ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, 
+vector<vector<string>* > solveMPCFlow(const ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, 
 												ListDigraph::NodeMap<string>& nodeLabel, int method)
 {
 	// create empty flow network and associated maps

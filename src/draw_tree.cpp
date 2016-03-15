@@ -121,6 +121,7 @@ void draw_tree_in_dot_file(const binary_matrix& m, string outputFileName)
 
 	int new_node_counter = 0;
 
+	cout << "INFO: Resulting matrix has " << a.n_rows << " total rows" << endl;
 	cout << "INFO: Resulting phylogeny has " << leaves.size() << " leaves" << endl;
 
 	while (leaves.size() > 1)

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <lemon/concepts/graph.h>
+#include <lemon/concepts/digraph.h>
 #include <lemon/list_graph.h>
 #include <lemon/network_simplex.h>
 #include <lemon/cost_scaling.h>
@@ -23,10 +24,10 @@
 using namespace lemon;
 using namespace std;
 
-int64_t createFlowNetwork(ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, ListDigraph::NodeMap<string>& nodeLabel, 
+int64_t createFlowNetwork(const ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, ListDigraph::NodeMap<string>& nodeLabel, 
 							ListDigraph& flowNetwork, ListDigraph::ArcMap<int64_t>& lowerMap, ListDigraph::ArcMap<int64_t>& upperMap, 
 							ListDigraph::ArcMap<int64_t>& costMap, ListDigraph::NodeMap<int64_t>& supplyMap, ListDigraph::NodeMap<string>& labelMap,
 							ListDigraph::NodeMap<ListDigraph::Node>& flowNodetoGraphNode);
 
-vector<vector<string>* > solveMPCFlow(ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, 
+vector<vector<string>* > solveMPCFlow(const ListDigraph& g, ListDigraph::ArcMap<int64_t>& arcWeight, 
 												ListDigraph::NodeMap<string>& nodeLabel, int method);

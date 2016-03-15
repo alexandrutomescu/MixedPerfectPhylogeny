@@ -114,13 +114,15 @@ int main(int argc, char **argv)
 	}
 
 	// hiding duplicate columns
-	inputMatrix.hide_duplicate_columns();
+	inputMatrix.hide_duplicate_columns(verbose);
 
 	if (not inputMatrix.is_conflict_free())
 	{
 		if (should_run_heuristic_algorithm)
 		{
 			heuristic_algorithm(inputMatrix, outputMatrix);
+			int lower_bound = compute_lower_bound(inputMatrix, verbose);
+			cout << "INFO: " << lower_bound << " is a lower bound on the optimum number of total output rows" << endl;
 		}
 		else
 		{
@@ -144,6 +146,8 @@ int main(int argc, char **argv)
 
 
 	draw_tree_in_dot_file(outputMatrix, outputFileName + ".dot");
+
+	// outputMatrix.print_to_file(outputFileName + ".uniquecols.csv");
 
 	// showing duplicate columns
 	outputMatrix.show_duplicate_columns();

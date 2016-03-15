@@ -119,3 +119,75 @@ void heuristic_algorithm(const binary_matrix& m, binary_matrix& result, bool ver
 	result.n_rows = result.cell.size();
 	assert(result.is_conflict_free());
 }
+
+int compute_lower_bound(const binary_matrix& m, bool verbose)
+{
+	if (verbose) cout << "*** Computing the lower bound on the number of rows in the conflict-free split row matrix..." << endl;
+
+	// computing the containment digraph of the entire matrix
+	// this is a DAG
+
+	ListDigraph H_M;
+	vector<ListDigraph::Node> nodes;
+
+	// adding the nodes to H_M
+	for (int j = 0; j < m.n_columns; j++)
+	{
+		ListDigraph::Node x;
+		x = H_M.addNode();
+		nodes.push_back(x);
+	}
+
+	// adding the edges to H_M
+	for (int j = 0; j < m.n_columns; j++)
+	{
+		for (int k = 0; k < m.n_columns; k++)
+		{
+			if (j != k and m.is_included_in(j,k))
+			{
+				ListDigraph::Arc a = H_M.addArc(nodes[j], nodes[k]);
+			}
+		}
+	}
+
+	int lower_bound = 0;
+	for (int i = 0; i < m.n_rows; i++)
+	{
+		ListDigraph::NodeMap<bool> subdigraph_node(H_M, false);
+		// creating the subdigraph of H_M for row i
+		for (int j = 0; j < m.n_columns; j++)
+		{
+			if (m.cell[i][j] == 1)
+			{
+				subdigraph_node[nodes[j]] = true;
+			}
+		}
+
+		FilterNodes<ListDigraph> subdigraph(H_M, subdigraph_node);
+
+		// solving the minimum path cover problem
+		vector<vector<string>* > paths;
+		// The following line unfortunately doesn't work
+		// paths = solveMPCFlow(subdigraph, arcWeight, nodeLabel, 1);
+		// so we need to copy the digraph
+		ListDigraph subdigraph_LD;
+		DigraphCopy<FilterNodes<ListDigraph>, ListDigraph> cg(subdigraph, subdigraph_LD);
+		cg.run();
+
+		ListDigraph::NodeMap<string> nodeLabel(H_M);
+		ListDigraph::ArcMap<int64_t> arcWeight(H_M);
+		for (ListDigraph::ArcIt arc(subdigraph_LD); arc != INVALID; ++arc) 
+		{
+			arcWeight[arc] = 0;
+		}
+		for (ListDigraph::NodeIt node(subdigraph_LD); node != INVALID; ++node) 
+		{
+			nodeLabel[node] = "x";
+		}
+		paths = solveMPCFlow(subdigraph_LD, arcWeight, nodeLabel, 1);
+
+		lower_bound += paths.size();
+	}
+
+	return lower_bound;	
+}
