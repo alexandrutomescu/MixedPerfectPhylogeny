@@ -6,7 +6,7 @@
 #include <fstream>
 #include <unordered_set>
 #include <assert.h>
-#include <time.h>
+#include <ctime>
 #include <stdlib.h>
 
 #include "OptionParser.h"
@@ -32,7 +32,7 @@ public:
 	bool are_conflicting(uint col_i, uint col_j) const;
 	bool are_equal(uint col_i, uint col_j) const;
 
-	void hide_duplicate_columns();
+	void hide_duplicate_columns(bool verbose = false); 
 	void show_duplicate_columns();
 };
 

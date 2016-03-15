@@ -220,7 +220,7 @@ bool binary_matrix::is_conflict_free() const
 	return true;
 }
 
-void binary_matrix::hide_duplicate_columns()
+void binary_matrix::hide_duplicate_columns(bool verbose)
 {
 	vector<bool> is_duplicate(n_columns, false);
 	vector< vector<string> > multiplicity(n_columns); // names of columns that are identical to the current one
@@ -274,6 +274,11 @@ void binary_matrix::hide_duplicate_columns()
 	cell = cell2;
 	column_names = column_names2;
 	n_columns = cell[0].size();
+
+	if (verbose)
+	{
+		cout << "INFO: " << n_columns << " columns are pair-wise distinct" << endl;
+	}
 }
 
 void binary_matrix::show_duplicate_columns()

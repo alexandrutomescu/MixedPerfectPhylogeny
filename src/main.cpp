@@ -4,7 +4,9 @@
 #include "draw_tree.h"
 
 using namespace std;
-#define N_TESTS 5
+#define N_TESTS 10
+#define N_ROWS_TEST 50
+#define N_COLS_TEST 1000
 
 int main(int argc, char **argv)
 {
@@ -12,14 +14,13 @@ int main(int argc, char **argv)
 	binary_matrix inputMatrix, outputMatrix;
 	bool should_run_heuristic_algorithm, should_run_tests, verbose;
 
+
 	// command line argument parser
 	string usage = "\n  %prog OPTIONS"
 		"\n\nBrief example:"
 		"\n  %prog -i <input .csv file> -o <output .csv file> [--heuristic]";
 	const string version = "%prog 0.1\nCopyright (C) 2016 Alexandru Tomescu\n"
-		"License GPLv3+: GNU GPL version 3 or later "
-		"<http://gnu.org/licenses/gpl.html>.\n"
-		"This is free software: you are free to change and redistribute it.\n"
+		"The MIT License (MIT)."
 		"There is NO WARRANTY, to the extent permitted by law.";
 	const string desc = "";
 	const string epilog = "";
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
 	parser.add_option("-o", "--output") .type("string") .dest("o") .set_default("") .help("Output file (.csv format). Another .dot file is outputted with the tree of the perfect phylogeny.");
 	parser.add_option("-e", "--heuristic") .action("store_true") .dest("heuristic_algorithm") .set_default(false) .help("Run the heuristic algorithm");
 	parser.add_option("-v", "--verbose") .action("store_true") .dest("verbose") .set_default(false) .help("Verbose command line output");
-	parser.add_option("-t", "--runtests") .action("store_true") .dest("run_tests") .set_default(false) .help("Tests the algorithms on random matrices. For each M in [4..10], N in [4..1000], it generates " + to_string(N_TESTS) + " random binary MxN matrices and checks that both algorithms return conflict-free matrices.");
+	parser.add_option("-t", "--runtests") .action("store_true") .dest("run_tests") .set_default(false) .help("Tests the algorithms on " + to_string(N_TESTS) + " random matrices of size " + to_string(N_ROWS_TEST) + "x" + to_string(N_COLS_TEST));
 
 	optparse::Values& options = parser.parse_args(argc, argv);
 
@@ -48,34 +49,48 @@ int main(int argc, char **argv)
 	if (should_run_tests)
 	{
 		int n_special_case = 0;
-		int n_total_matrices = 0;
-		for (int k = 0; k < N_TESTS; k++)
+		int n_heuristic = 0;
+
+		double total_time_poly_alg = 0;
+		double total_time_heuristic_alg = 0;
+
+		while ((n_heuristic < N_TESTS)) // or (n_special_case < N_TESTS))
 		{
-			for (int i = 4; i <= 10; i++)
+			binary_matrix inputMatrix;
+			binary_matrix outputMatrix;
+
+			create_random_matrix(inputMatrix, N_ROWS_TEST, N_COLS_TEST);
+			inputMatrix.hide_duplicate_columns(verbose);
+			if (not inputMatrix.is_conflict_free())
 			{
-				for (int j = 4; j <= 1000; j++)
+				if (n_heuristic < N_TESTS)
 				{
-					binary_matrix inputMatrix;
-					binary_matrix outputMatrix;
-					n_total_matrices++;
-
-					create_random_matrix(inputMatrix, i, j);
-					inputMatrix.hide_duplicate_columns();
-
-					if (not inputMatrix.is_conflict_free())
-					{
-						heuristic_algorithm(inputMatrix, outputMatrix, verbose);
-						if (check_special_case(inputMatrix, verbose))
-						{
-							n_special_case++;
-							polynomial_algorithm(inputMatrix, outputMatrix, verbose);
-						}
-					}
+					n_heuristic++;
+					clock_t begin = clock();
+					heuristic_algorithm(inputMatrix, outputMatrix, verbose);
+					clock_t end = clock();
+					total_time_heuristic_alg += double(end - begin);
 				}
-				cout << "*** Matrices with " << i << " rows: OK." << " Matrices belonging to the special case: " << n_special_case << "/" << n_total_matrices << endl;
+				
+				// if (n_special_case < N_TESTS)
+				// {
+				// 	if (check_special_case(inputMatrix, verbose))
+				// 	{
+				// 		n_special_case++;
+				// 		cout << "INFO: Found " << n_special_case << "/" << N_TESTS << " matrices belonging to the polynomially solvable case" << endl;
+				// 		clock_t begin = clock();
+				// 		polynomial_algorithm(inputMatrix, outputMatrix, verbose);
+				// 		clock_t end = clock();
+				// 		total_time_poly_alg += double(end - begin);
+				// 	}
+				// }
 			}
 		}
-		cout << "*** All tests: OK" << endl;
+		cout << "INFO: Tested the algorithms on " << N_TESTS << " random matrices satisfying the input assumptions of the algorithms" << endl;
+		// cout << "INFO: The polynomial algorithm runs on average in " << (double)total_time_poly_alg / (N_TESTS * CLOCKS_PER_SEC) << " sec" << endl;
+		cout << "INFO: The heuristic algorithm runs on average in " << (double)total_time_heuristic_alg / (N_TESTS * CLOCKS_PER_SEC) << " sec" << endl;
+
+		return EXIT_SUCCESS;
 	}
 
 	if (inputFileName == "")
