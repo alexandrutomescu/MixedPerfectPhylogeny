@@ -23,6 +23,8 @@ void heuristic_algorithm(const binary_matrix& m, binary_matrix& result, bool ver
 		nodeLabel[x] = to_string(j + 1);
 	}
 
+	if (verbose) cout << "INFO: The column containment digraph H_M is:" << endl << "digraph {";
+
 	// adding the edges to H_M
 	for (int j = 0; j < m.n_columns; j++)
 	{
@@ -32,12 +34,16 @@ void heuristic_algorithm(const binary_matrix& m, binary_matrix& result, bool ver
 			{
 				ListDigraph::Arc a = H_M.addArc(nodes[j], nodes[k]);
 				arcWeight[a] = 0;
+				if (verbose) cout << j << "->" << k << ";" << endl;
 			}
 		}
 	}
+	if (verbose) cout << "}" << endl;
 
 	vector<vector<string>* > paths;
 	paths = solveMPCFlow(H_M, arcWeight, nodeLabel, 1);
+
+	if (verbose) cout << "INFO: The color classes of the columns are:" << endl;
 
 	// getting the colors of the nodes of H_M from paths
 	vector<vector<string>* >::iterator it = paths.begin();
@@ -49,7 +55,7 @@ void heuristic_algorithm(const binary_matrix& m, binary_matrix& result, bool ver
 		for(itp=currentpath.begin(); itp != currentpath.end(); ++itp)
 		{
 			int column = stoi( *itp ) - 1;
-			if (verbose) cout << column << ","; 
+			if (verbose and column != -1) cout << column << ","; 
 			if ((column != -1) and (color[column] == -1))
 			{
 				color[column] = color_index;

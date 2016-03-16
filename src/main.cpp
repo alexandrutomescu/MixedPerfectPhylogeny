@@ -116,11 +116,13 @@ int main(int argc, char **argv)
 	// hiding duplicate columns
 	inputMatrix.hide_duplicate_columns(verbose);
 
+	// inputMatrix.print_to_file(inputFileName + ".uniquecols.csv");
+
 	if (not inputMatrix.is_conflict_free())
 	{
 		if (should_run_heuristic_algorithm)
 		{
-			heuristic_algorithm(inputMatrix, outputMatrix);
+			heuristic_algorithm(inputMatrix, outputMatrix, verbose);
 			int lower_bound = compute_lower_bound(inputMatrix, verbose);
 			cout << "INFO: " << lower_bound << " is a lower bound on the optimum number of total output rows" << endl;
 		}
