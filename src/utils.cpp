@@ -317,6 +317,59 @@ void binary_matrix::show_duplicate_columns()
 	n_columns = cell[0].size();
 }
 
+void binary_matrix::remove_columns_with_low_support(uint support, bool verbose)
+{
+	cout << "*** Removing columns that appear strictly less than " << support << " times" << endl;
+	vector< uint > multiplicity(n_columns, 0); // names of columns that are identical to the current one
+
+	for (int j = 0; j < n_columns; j++)
+	{
+		for (int k = 0; k < n_columns; k++)
+		{
+			if (are_equal(j, k))
+			{
+				multiplicity[j]++;
+			}
+		}
+	}
+	// cout << "*** Found the duplicate columns" << endl;
+
+	// computing the new matrix contents and column names
+	vector<string> column_names2;
+	vector< vector<bool> > cell2;
+	for (int i = 0; i < n_rows; i++)
+	{
+		vector<bool> next_row;
+		for (int j = 0; j < n_columns; j++)
+		{
+			if (multiplicity[j] >= support)
+			{
+				next_row.push_back(cell[i][j]);
+
+				if (i == 0)
+				{	
+					column_names2.push_back(column_names[j]);
+				}
+			}
+
+		}
+		cell2.push_back(next_row);
+	}
+
+	// cout << "*** Computed the unique columns" << endl;
+
+	cell.clear();
+	column_names.clear();
+	cell = cell2;
+	column_names = column_names2;
+	n_columns = cell[0].size();
+
+	if (verbose)
+	{
+		cout << "INFO: " << n_columns << " columns have support at least " << support << endl;
+	}
+}
+
 
 bool get_vector_from_string(string s, vector<bool>& result)
 {

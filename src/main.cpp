@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	string inputFileName, outputFileName;
 	binary_matrix inputMatrix, outputMatrix;
 	bool should_run_heuristic_algorithm, should_run_tests, verbose;
+	uint support;
 
 
 	// command line argument parser
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 	parser.add_option("-e", "--heuristic") .action("store_true") .dest("heuristic_algorithm") .set_default(false) .help("Run the heuristic algorithm");
 	parser.add_option("-v", "--verbose") .action("store_true") .dest("verbose") .set_default(false) .help("Verbose command line output");
 	parser.add_option("-t", "--runtests") .action("store_true") .dest("run_tests") .set_default(false) .help("Tests the algorithms on " + to_string(N_TESTS) + " random matrices of size " + to_string(N_ROWS_TEST) + "x" + to_string(N_COLS_TEST));
+	parser.add_option("-s", "--minsupport") .type("int") .dest("min_support") .set_default(1) .help("Columns that appear strictly less than min_support times are removed from the analysis [default: %default]");
 
 	optparse::Values& options = parser.parse_args(argc, argv);
 
@@ -45,6 +47,7 @@ int main(int argc, char **argv)
 	should_run_heuristic_algorithm = (options.get("heuristic_algorithm") ? true : false);
 	should_run_tests = (options.get("run_tests") ? true : false);
 	verbose = (options.get("verbose") ? true : false);
+	support = uint(options.get("min_support"));
 
 	if (should_run_tests)
 	{
@@ -109,11 +112,12 @@ int main(int argc, char **argv)
 
 	if (not inputMatrix.read_from_file(inputFileName))
 	{
-		cout << "ERROR: There was an error" << endl;
+		cout << "ERROR: There was an error reading the input file" << endl;
 		return EXIT_FAILURE;
 	}
 
 	// hiding duplicate columns
+	inputMatrix.remove_columns_with_low_support(support, verbose);
 	inputMatrix.hide_duplicate_columns(verbose);
 
 	// inputMatrix.print_to_file(inputFileName + ".uniquecols.csv");

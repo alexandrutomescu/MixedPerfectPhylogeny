@@ -34,6 +34,8 @@ public:
 
 	void hide_duplicate_columns(bool verbose = false); 
 	void show_duplicate_columns();
+
+	void remove_columns_with_low_support(uint support, bool verbose = false); 
 };
 
 bool get_vector_from_string(string s, vector<bool>& result);
