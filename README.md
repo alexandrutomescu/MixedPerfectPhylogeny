@@ -70,6 +70,12 @@ If your input matrix does not belong to the polynomially-solvable case, then the
 
 	./mixedphylogeny -i example/matrix_alg2.csv -o example/matrix_alg2.out.csv --heuristic
 
+Usually, you might want to ignore the columns that appear in the matrix few times (i.e., which repeat very few times as binary vectors). They might be caused to errors in the data. You may do so with the option **--minsupport**, e.g.:
+
+	./mixedphylogeny -i example/matrix_alg2.csv -o example/matrix_alg2.out.csv --heuristic --minsupport 2
+
+The above command keeps only those columns that appear at least 2 times (as binary vectors) in the matrix.
+
 # 5. Experimental results
 
 We tested the heuristic algorithm on the ten binary matrices from:
